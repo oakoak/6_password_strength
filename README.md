@@ -5,15 +5,23 @@ Check strength your password
 ---
 
 ### Description
-+ check password on upper and lower letter
++ Check password on upper and lower letter
 + on inclusion one or more digit
 + on inclusion special character
 + on finding in black list
 + and on long
++ You can use password.lst how blacklist or download from [Blacklist](https://github.com/danielmiessler/SecLists/tree/master/Passwords)
 
 ### How starting
 ```bash
 python password_strength.py <your black list>
+
+     input user password: <your password>
+```
+
+### Example input
+```bash
+strength your password: 8
 ```
 
 ### Requirements
