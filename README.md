@@ -10,7 +10,8 @@ Check strength your password
 + on inclusion special character
 + on finding in black list
 + and on long
-+ You can use password.lst how blacklist or download from [Blacklist](https://github.com/danielmiessler/SecLists/tree/master/Passwords)
++ List of unwanted passwords for the script you can download here: [Blacklist](https://github.com/danielmiessler/SecLists/tree/master/Passwords)
++ also you can use *password.lst*
 
 ### How starting
 ```bash
@@ -21,7 +22,7 @@ python password_strength.py <your black list>
 
 ### Example input
 ```bash
-strength your password: 8
+Strength your password: 8
 ```
 
 ### Requirements
