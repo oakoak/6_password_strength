@@ -1,5 +1,7 @@
 import argparse
-import getpass
+from getpass import getpass
+from string import punctuation
+from os.path import isfile
 
 
 def has_upper(password):
@@ -14,8 +16,8 @@ def has_digit(password):
     return any([symbol.isdigit() for symbol in password])
 
 
-def has_special_characters(password, special_characters):
-    return any([symbol in special_characters for symbol in password])
+def has_special_characters(password):
+    return any([symbol in punctuation for symbol in password])
 
 
 def check_length(password):
@@ -42,8 +44,7 @@ def get_password_strength(password, black_list):
         has_upper(password),
         has_lower(password),
         has_digit(password),
-        has_special_characters(password,
-                               """ !"#$%&'()*+,-./:;<=>?@[\]^_`{|}~"""),
+        has_special_characters(password),
         check_length(password),
         is_password_in_black_list(password, black_list)*3
     ])
@@ -70,17 +71,12 @@ def get_parser_args():
 
 if __name__ == "__main__":
     argument = get_parser_args()
-
-    try:
-        if argument.path is None:
-            print("Since you did not enter the password file, the blacklist is empty")
-            black_list = []
-        else:
-            black_list = load_black_list(argument.path)
-    except FileNotFoundError:
+    if argument.path is None or not isfile(argument.path):
         print("file with the name of the '{}' is not found, the blacklist is empty".format(argument.path))
         black_list = []
+    else:
+        black_list = load_black_list(argument.path)
 
-    password = getpass.getpass()
+    password = getpass()
     password_strength = get_password_strength(password, black_list)
-    print("strength your password: {}".format(password_strength))
+    print("Strength your password: {}".format(password_strength))
