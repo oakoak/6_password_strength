@@ -10,7 +10,7 @@ Check strength your password
 + on inclusion special character
 + on finding in black list
 + and on long
-+ List of unwanted passwords for the script you can download here: [Blacklist](https://github.com/danielmiessler/SecLists/tree/master/Passwords)
++ [Here](https://github.com/danielmiessler/SecLists/tree/master/Passwords) there is a selection of blacklists from which you can choose the one suitable for you
 + also you can use *password.lst*
 
 ### How starting

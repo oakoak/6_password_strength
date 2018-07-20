@@ -36,7 +36,7 @@ def check_length(password):
 
 
 def is_password_in_black_list(password, black_list):
-    return password not in black_list
+    return password in black_list
 
 
 def get_password_strength(password, black_list):
@@ -46,7 +46,7 @@ def get_password_strength(password, black_list):
         has_digit(password),
         has_special_characters(password),
         check_length(password),
-        is_password_in_black_list(password, black_list)*3
+        (not is_password_in_black_list(password, black_list))*3
     ])
 
 
@@ -72,7 +72,8 @@ def get_parser_args():
 if __name__ == "__main__":
     argument = get_parser_args()
     if argument.path is None or not isfile(argument.path):
-        print("file with the name of the '{}' is not found, the blacklist is empty".format(argument.path))
+        print("file with the name of the '{}'"
+              " is not found, the blacklist is empty".format(argument.path))
         black_list = []
     else:
         black_list = load_black_list(argument.path)
